@@ -90,6 +90,7 @@ export default async function decorate($block) {
     ['h2', 'p'].forEach((tag) => {
       const elements = block.querySelectorAll(tag);
       elements.forEach((el, tagIndex) => {
+        if(el.classList.contains('pretitle')) return;
         el.id = `featured-article_${index}_${tag}_${tagIndex}`;
       });
     });
