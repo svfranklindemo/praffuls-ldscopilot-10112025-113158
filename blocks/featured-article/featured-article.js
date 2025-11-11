@@ -89,9 +89,9 @@ export default async function decorate($block) {
     // Add indexed IDs to text elements
     ['h2', 'p'].forEach((tag) => {
       const elements = block.querySelectorAll(tag);
-      elements.forEach((el, tagIndex) => {
+      elements.forEach((el) => {
         if(el.classList.contains('pretitle')) return;
-        el.id = `featured-article_${index}_${tag}_${tagIndex}`;
+        el.id = `featured-article_${index}_${tag}_0`;
       });
     });
   });
