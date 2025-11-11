@@ -85,5 +85,13 @@ export default async function decorate($block) {
         picture.setAttribute('data-img-id', imgId);
       }
     });
+
+    // Add indexed IDs to text elements
+    ['h2', 'p'].forEach((tag) => {
+      const elements = block.querySelectorAll(tag);
+      elements.forEach((el, tagIndex) => {
+        el.id = `featured-article_${index}_${tag}_${tagIndex}`;
+      });
+    });
   });
 }
