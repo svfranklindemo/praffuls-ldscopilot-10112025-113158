@@ -273,6 +273,17 @@ export function decorateBlock(block) {
         picture.setAttribute('data-img-id', imgId);
       }
     });
+
+    const blocksWithCustomIDs = ['featured-article'];
+    if (!blocksWithCustomIDs.includes(shortBlockName)) {
+      // Merge headings (h1-h6) and paragraphs into a single loop for efficiency
+      ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'].forEach((tag) => {
+        const elements = block.querySelectorAll(tag);
+        elements.forEach((el, elIndex) => {
+          el.id = `${shortBlockName}_${index}_${tag}_${elIndex}`;
+        });
+      });
+    }
   });
 }
 
