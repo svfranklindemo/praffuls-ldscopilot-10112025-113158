@@ -38,4 +38,25 @@ export default function decorate(block) {
     const slide = block.children[activeElement];
     updateButtons(slide);
   }, { passive: true });
+
+  // Add indexed IDs to text content divs only
+  const carouselTextBlocks = block.querySelectorAll('.carousel-text');
+  carouselTextBlocks.forEach((carouselTextBlock, bodyIndex) => {
+    carouselTextBlock.setAttribute('data-text-block-index', bodyIndex);
+  });
+
+  // Add indexed IDs to heading elements with container context
+  ['h1', 'h2', 'h3', 'h4', 'h5', 'h6','p'].forEach((tag) => {
+    const elements = block.querySelectorAll(tag);
+    elements.forEach((el) => {
+      const textBlock = el.closest('[data-text-block-index]');
+      const textBlockIndex = textBlock ? textBlock.getAttribute('data-text-block-index') : 'unknown';
+      
+      // Count this tag within its container
+      const textBlockElements = textBlock ? textBlock.querySelectorAll(tag) : [el];
+      const tagIndex = Array.from(textBlockElements).indexOf(el);
+      
+      el.id = `carousel_${index}_text_${textBlockIndex}_${tag}_${tagIndex}`;
+    });
+  });
 }

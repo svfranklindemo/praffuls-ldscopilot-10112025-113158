@@ -274,7 +274,7 @@ export function decorateBlock(block) {
       }
     });
 
-    const blocksWithCustomIDs = ['featured-article'];
+    const blocksWithCustomIDs = ['carousel'];
     if (!blocksWithCustomIDs.includes(shortBlockName)) {
       // Merge headings (h1-h6) and paragraphs into a single loop for efficiency
       ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p'].forEach((tag) => {
