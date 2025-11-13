@@ -266,12 +266,6 @@ export function decorateBlock(block) {
     images.forEach((img, imgIndex) => {
       const imgId = `${shortBlockName}_${index}_image_${imgIndex}`;
       img.id = imgId;
-      
-      // If image is inside a picture element, also add a data attribute to the picture
-      const picture = img.closest('picture');
-      if (picture) {
-        picture.setAttribute('data-img-id', imgId);
-      }
     });
 
     const blocksWithCustomIDs = ['carousel'];

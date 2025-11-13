@@ -78,12 +78,6 @@ export default async function decorate($block) {
     images.forEach((img, imgIndex) => {
       const imgId = `featured-article_${index}_image_${imgIndex}`;
       img.id = imgId;
-      
-      // If image is inside a picture element, also add a data attribute to the picture
-      const picture = img.closest('picture');
-      if (picture) {
-        picture.setAttribute('data-img-id', imgId);
-      }
     });
 
     // Add indexed IDs to text elements
